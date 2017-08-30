@@ -1,4 +1,6 @@
-
+//ChristopherKha
+//August30
+///Pikachu
 public class Pikachu {
 
 	public static void main(String[] args) {
