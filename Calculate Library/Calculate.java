@@ -83,5 +83,9 @@ public class Calculate {
 				
 		return equation; 
 	}
-		
+	
+	public static boolean isDivisibleBy(int num, int denom) {
+		int remainder = num % denom;
+		return (remainder == 0);
+	}
 }
