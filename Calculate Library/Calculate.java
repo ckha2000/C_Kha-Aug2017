@@ -46,11 +46,42 @@ public class Calculate {
 		return numerator + "/" + num3;
 	}
 	
-	
-	
-	
+	//takes an improper fraction and converts it into a mixed number
 	public static String toMixedNum(int num1, int num2) {
+		int wholeNum = num1 / num2;
+		int numerator = num1 % num2;
+		if (numerator==0){
+			return Integer.toString(wholeNum);
+		}else{
+			return wholeNum + "_" + numerator + "/" + num2;
+		}
+	}
+	
+	// takes a binomial expression in the form (ax + b)(cx + d) and 
+	//returns it in the quadratic form  Ax^2 + Bx + C
+	public static String foil(int a, int b, int c, int d, String x) {
+		int A = a*c;
+		int B = a*d + b*c;
+		int C = b*d;
 		
+		//A
+		String equation = A + x + "^2";
+		
+		//B
+		if(B>0){	//B is positive
+			equation += " + " + B + x;
+		}else if(B<0){		//B is negative
+			equation += " - " + B + x;
+		}
+		
+		//C
+		if(C>0){	//C is positive
+			equation += " + " + C;
+		}else if(C<0){	//C is negative
+			equation += " - " + (-1)*C;
+		}
+				
+		return equation; 
 	}
 		
 }
