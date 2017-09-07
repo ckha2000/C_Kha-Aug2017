@@ -41,19 +41,19 @@ public class Calculate {
 	}
 	
 	//takes a mixed number and converts it into an improper fraction
-	public static String toImproperFrac(int num1, int num2, int num3) {
-		int numerator = num1 * num3 + num2;
-		return numerator + "/" + num3;
+	public static String toImproperFrac(int wholeNum, int num, int denom) {
+		int numerator = wholeNum * denom + num;
+		return numerator + "/" + denom;
 	}
 	
 	//takes an improper fraction and converts it into a mixed number
-	public static String toMixedNum(int num1, int num2) {
-		int wholeNum = num1 / num2;
-		int numerator = num1 % num2;
+	public static String toMixedNum(int num, int denom) {
+		int wholeNum = num / denom;
+		int numerator = num % denom;
 		if (numerator==0){
 			return Integer.toString(wholeNum);
 		}else{
-			return wholeNum + "_" + numerator + "/" + num2;
+			return wholeNum + "_" + numerator + "/" + denom;
 		}
 	}
 	
