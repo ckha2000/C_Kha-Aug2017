@@ -6,8 +6,7 @@
 public class DoMath {
 
 	public static void main(String[] args) {
-		
-		System.out.println(Calculate.isDivisible()); 
+		Calculate.round2(-1.455);
 	}
 
 }
