@@ -84,8 +84,70 @@ public class Calculate {
 		return equation; 
 	}
 	
+	//determines if the first integer is divisible by the second integer
 	public static boolean isDivisibleBy(int num, int denom) {
 		int remainder = num % denom;
 		return (remainder == 0);
+	}
+	
+	//returns the absolute value of a given double
+	public static double absValue(double number){
+		if(number < 0){
+			return number*-1;
+		}else{
+			return number;
+		}
+	}
+	
+	//returns the larger of the two numbers passed into it
+	public static double max(double num1, double num2){
+		if(num1 >= num2){
+			return num1;
+		}else{
+			return num2;
+		}
+	}
+	
+	//returns the largest of the three numbers passed into it
+	public static double max(double num1, double num2, double num3){
+		if(num1 > num2 && num1 > num3){
+			return num1;
+		}else if(num2 > num3){
+			return num2;
+		}else{
+			return num3;
+		}
+	}
+	
+	//returns the smaller of the two numbers passed into it
+	public static double min(double num1, double num2){
+		if(num1 < num2){
+			return num1;
+		}else{
+			return num2;
+		}
+	}
+	
+	//rounds any decimal number to two decimal places
+	public static double round2(double num){
+		double rounded = num*100;	// multiplies num by 100 so that the hundredth's place is moved to the ones place
+		rounded = ((int) rounded)/100.;	//cuts of the remaining decimal places and shifts the number back to its previous state
+		
+		double remainder = num - rounded;
+		
+		System.out.println(remainder);
+		System.out.println(num);
+		System.out.println(rounded);
+		
+		if (absValue(remainder) >= 0.005 ){	//checks to see if rounding is needed
+			if(num < 0){	//if num is negative
+				rounded -= 0.01;
+			}else{			//if num is positive
+				rounded += 0.01;
+			}
+		}
+		System.out.println(rounded);
+		
+		return rounded;
 	}
 }
