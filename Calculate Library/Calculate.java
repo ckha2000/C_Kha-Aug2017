@@ -130,24 +130,16 @@ public class Calculate {
 	
 	//rounds any decimal number to two decimal places
 	public static double round2(double num){
-		double rounded = num*100;	// multiplies num by 100 so that the hundredth's place is moved to the ones place
-		rounded = ((int) rounded)/100.;	//cuts of the remaining decimal places and shifts the number back to its previous state
+		double dec3 = num % .01;	//returns everything after the second decimal place
+		num -= dec3;			//cuts of everything after the second decimal place
 		
-		double remainder = num - rounded;
-		
-		System.out.println(remainder);
-		System.out.println(num);
-		System.out.println(rounded);
-		
-		if (absValue(remainder) >= 0.005 ){	//checks to see if rounding is needed
+		if (absValue(dec3) >= 0.005 ){	//checks to see if rounding is needed
 			if(num < 0){	//if num is negative
-				rounded -= 0.01;
+				num -= 0.01;
 			}else{			//if num is positive
-				rounded += 0.01;
+				num += 0.01;
 			}
 		}
-		System.out.println(rounded);
-		
-		return rounded;
+		return num;
 	}
 }
