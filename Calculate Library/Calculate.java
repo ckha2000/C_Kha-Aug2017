@@ -142,4 +142,16 @@ public class Calculate {
 		}
 		return num;
 	}
+	
+	//takes in an exponent expression and returns the result as a double
+	public static double exponent(double base, int exponent) {
+		double resultant = 1;
+		for(int i = 0; i < exponent; i++) {
+			resultant *= base;
+		}
+		return resultant;
+	}
+	
+	//public static int factorial(int )
+					
 }
