@@ -152,6 +152,62 @@ public class Calculate {
 		return resultant;
 	}
 	
-	//public static int factorial(int )
+	//takes in a positive integer and returns its expanded factorial
+	public static int factorial(int num){
+		int resultant = 1;
+		while(num > 1){
+			resultant *= num;
+			System.out.println(num);
+			System.out.println(resultant);
+			num--;
+		}
+		return resultant;
+	}
+	
+	//checks if the input is a prime number
+	public static boolean isPrime(int num){
+		int n = (int)absValue(num);
+		int factor = n - 1;
+		boolean isPrime = true;
+		while(factor > 2){
+			if(isDivisibleBy(n, factor)){
+				isPrime = false;
+				break;
+			}
+			factor--;
+		}
+		return isPrime;
+	}
+	
+	//returns the greatest common factor of two integers
+	public static int gcf(int a, int b){
+		int divisor = 0;
+	    if(a < 0){
+	        a *= -1;
+	    }
+	    if(b < 0){
+	        b *= -1;
+	    }
+	    
+	    if(b > a){
+	        divisor = b;
+	    }else{
+	        divisor = a;
+	    }
+	    
+	    while (divisor >= 1){
+	        if(a % divisor == b % divisor && a % divisor ==0){
+	            break;
+	        }
+	        divisor--;
+	    }
+	    return divisor;
+	}
+	
+	public static double sqrt(double num){
+		double guess;
+		
+		while()
+	}
 					
 }
