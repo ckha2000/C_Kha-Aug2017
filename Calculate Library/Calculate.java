@@ -204,10 +204,30 @@ public class Calculate {
 	    return divisor;
 	}
 	
+	//returns the square root of a decimal number rounded to the nearest two decimal places
 	public static double sqrt(double num){
-		double guess;
+		if(num < 0){
+			throw new IllegalArgumentException("Negative number: " + num);
+		}
 		
-		while()
-	}
+		double guess = 1;
+		double difference;
+		
+		if(num == 0 || num == 1){
+			return num;
+		}
+			
+		while(true){
+			guess = .5*(num/guess + guess);
+			difference = guess*guess - num;
+			if(absValue(difference) <= 0.005){
+				return round2(guess);
+			}
+			if(difference > 0){
+				guess +=0.001;
+			}else if(difference < 0){
+				guess -= 0.001;
+			}
+		}
 					
 }
