@@ -129,18 +129,19 @@ public class Calculate {
 	}
 	
 	//rounds any decimal number to two decimal places
-	public static double round2(double num){
-		double dec3 = num % .01;	//returns everything after the second decimal place
-		num -= dec3;			//cuts of everything after the second decimal place
+	public static double round2(double orig){
+		double result = 0.0;
 		
-		if (absValue(dec3) >= 0.005 ){	//checks to see if rounding is needed
-			if(num < 0){	//if num is negative
-				num -= 0.01;
-			}else{			//if num is positive
-				num += 0.01;
-			}
+		int tempInt = (int) (orig = 1000);
+		int roundNum = tempInt % 10;
+		tempInt = tempInt/10;
+		if(roundNum >=0 && tempInt > 0) {
+			tempInt++;
+		}else if(roundNum <= -5 && tempInt < 0) {
+			tempInt--;
 		}
-		return num;
+		result = tempInt/100.0;
+		return result;
 	}
 	
 	//takes in an exponent expression and returns the result as a double
@@ -157,8 +158,6 @@ public class Calculate {
 		int resultant = 1;
 		while(num > 1){
 			resultant *= num;
-			System.out.println(num);
-			System.out.println(resultant);
 			num--;
 		}
 		return resultant;
@@ -204,10 +203,30 @@ public class Calculate {
 	    return divisor;
 	}
 	
+	//returns the square root of a decimal number rounded to the nearest two decimal places
 	public static double sqrt(double num){
-		double guess;
+		if(num < 0){
+			throw new IllegalArgumentException("Negative number: " + num);
+		}
 		
-		while()
-	}
-					
+		double guess = 1;
+		double difference;
+		
+		if(num == 0 || num == 1){
+			return num;
+		}
+			
+		while(true){
+			guess = .5*(num/guess + guess);
+			difference = guess*guess - num;
+			if(absValue(difference) <= 0.005){
+				return round2(guess);
+			}
+			if(difference > 0){
+				guess +=0.001;
+			}else if(difference < 0){
+				guess -= 0.001;
+			}
+		}
+	}	
 }
