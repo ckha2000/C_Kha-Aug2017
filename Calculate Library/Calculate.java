@@ -132,10 +132,10 @@ public class Calculate {
 	public static double round2(double orig){
 		double result = 0.0;
 		
-		int tempInt = (int) (orig = 1000);
+		int tempInt = (int) (orig * 1000);
 		int roundNum = tempInt % 10;
 		tempInt = tempInt/10;
-		if(roundNum >=0 && tempInt > 0) {
+		if(roundNum >=5 && tempInt > 0) {
 			tempInt++;
 		}else if(roundNum <= -5 && tempInt < 0) {
 			tempInt--;
