@@ -6,7 +6,7 @@
 public class DoMath {
 
 	public static void main(String[] args) {
-		System.out.println(Calculate.round2(-1.665));
+		System.out.println(Calculate.factorial(16));
 	}
 
 }

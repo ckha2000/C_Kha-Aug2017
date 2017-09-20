@@ -43,7 +43,7 @@ public class Calculate {
 	//takes a mixed number and converts it into an improper fraction
 	public static String toImproperFrac(int wholeNum, int num, int denom) {
 		int numerator = wholeNum * denom + num;
-		return numerator + "/" + denom;
+		return numerator + "/" + denom; 
 	}
 	
 	//takes an improper fraction and converts it into a mixed number
