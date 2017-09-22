@@ -146,6 +146,10 @@ public class Calculate {
 	
 	//takes in an exponent expression and returns the result as a double
 	public static double exponent(double base, int exponent) {
+		if(exponent < 0) {
+			throw new IllegalArgumentException()
+		}
+		
 		double resultant = 1;
 		for(int i = 0; i < exponent; i++) {
 			resultant *= base;
@@ -155,6 +159,9 @@ public class Calculate {
 	
 	//takes in a positive integer and returns its expanded factorial
 	public static int factorial(int num){
+		if(num < 0) {
+			throw new IllegalArgumentException("The input to factorial cannot be negative");
+		}
 		int resultant = 1;
 		while(num > 1){
 			resultant *= num;
@@ -181,12 +188,9 @@ public class Calculate {
 	//returns the greatest common factor of two integers
 	public static int gcf(int a, int b){
 		int divisor = 0;
-	    if(a < 0){
-	        a *= -1;
-	    }
-	    if(b < 0){
-	        b *= -1;
-	    }
+		
+	    a = (int) absValue((double) a);
+	    b = (int) absValue((double) b);
 	    
 	    if(b > a){
 	        divisor = b;
