@@ -86,6 +86,9 @@ public class Calculate {
 	
 	//determines if the first integer is divisible by the second integer
 	public static boolean isDivisibleBy(int num, int denom) {
+		if(denom == 0){
+			throw new IllegalArgumentException("denom cannot be 0"); 
+		}
 		int remainder = num % denom;
 		return (remainder == 0);
 	}
@@ -147,7 +150,7 @@ public class Calculate {
 	//takes in an exponent expression and returns the result as a double
 	public static double exponent(double base, int exponent) {
 		if(exponent < 0) {
-			throw new IllegalArgumentException()
+			throw new IllegalArgumentException("Enter a positive exponent");
 		}
 		
 		double resultant = 1;
@@ -210,7 +213,7 @@ public class Calculate {
 	//returns the square root of a decimal number rounded to the nearest two decimal places
 	public static double sqrt(double num){
 		if(num < 0){
-			throw new IllegalArgumentException("Negative number: " + num);
+			throw new IllegalArgumentException("You cannot take the square root of a negative number");
 		}
 		
 		double guess = 1;
@@ -232,5 +235,41 @@ public class Calculate {
 				guess -= 0.001;
 			}
 		}
-	}	
+	}
+	
+	//returns the roots of a quadratic function as a String
+	public static String quadForm(int a, int b, int c){
+		if(a <= 0){
+			throw new IllegalArgumentException("Please enter a valid coefficient for \"a\"");
+		}
+		
+		int numRoots;
+		double rt1;
+		double rt2;
+		
+		double discriminant = discriminant(a, b, c);
+		
+		if(discriminant < 0){ 
+			numRoots = 0;
+		}else if(discriminant == 0){
+			numRoots = 1;
+		}else{
+			numRoots = 2;
+		}
+		
+		if(numRoots == 0){
+			return "no real roots";
+		}else if(numRoots == 1){
+			return "" + (-1*b)/(2*a);
+		}else{
+			rt1 = round2(((-1*b)+sqrt(discriminant))/(2*a));
+			rt2 = round2(((-1*b)-sqrt(discriminant))/(2*a));
+			
+			if(min(rt1, rt2) == rt1){
+				return rt1 + " and " + rt2;
+			}else{
+				return rt2 + " and " + rt1;
+			}
+		}
+	}
 }
