@@ -122,7 +122,16 @@ public class Calculate {
 		}
 	}
 	
-	//returns the smaller of the two numbers passed into it
+	//returns smaller of the two numbers
+	public static int min(int num1, int num2) {
+		if(num1 < num2){
+			return num1;
+		}else{
+			return num2;
+		}
+	}
+	
+	//returns the smaller of the two numbers passed into it - overloaded for doubles
 	public static double min(double num1, double num2){
 		if(num1 < num2){
 			return num1;
