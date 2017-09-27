@@ -68,16 +68,16 @@ public class Calculate {
 		String equation = A + x + "^2";
 		
 		//B
-		if(B>0){	//B is positive
+		if(B>0){			//B is positive
 			equation += " + " + B + x;
 		}else if(B<0){		//B is negative
 			equation += " - " + B + x;
 		}
 		
 		//C
-		if(C>0){	//C is positive
+		if(C>0){			//C is positive
 			equation += " + " + C;
-		}else if(C<0){	//C is negative
+		}else if(C<0){		//C is negative
 			equation += " - " + (-1)*C;
 		}
 				
@@ -219,6 +219,10 @@ public class Calculate {
 	        divisor = a;
 	    }
 	    
+	    if(a == 0 || b == 0) { //checks if one of the values is 0
+	    	return 0;
+	    }
+	    
 	    while (divisor >= 1){	//runs through every value between the greater number and zero until it reaches a value that is a common factor
 	        if(a % divisor == 0 && b % divisor == 0){
 	            break;
@@ -277,13 +281,15 @@ public class Calculate {
 		
 		if(numRoots == 0){
 			return "no real roots";
+			
 		}else if(numRoots == 1){
 			return "" + (-1*b)/(2*a);
-		}else{
-			rt1 = round2(((-1*b)+sqrt(discriminant))/(2*a));
+			
+		}else{ //two roots
+			rt1 = round2(((-1*b)+sqrt(discriminant))/(2*a));	
 			rt2 = round2(((-1*b)-sqrt(discriminant))/(2*a));
 			
-			if(min(rt1, rt2) == rt1){
+			if(min(rt1, rt2) == rt1){ //returns the lower value first
 				return rt1 + " and " + rt2;
 			}else{
 				return rt2 + " and " + rt1;
