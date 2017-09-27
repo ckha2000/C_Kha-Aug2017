@@ -102,6 +102,14 @@ public class Calculate {
 		}
 	}
 	
+	public static int absValue(int number){
+		if(number < 0){
+			return number*-1;
+		}else{
+			return number;
+		}
+	}
+	
 	//returns the larger of the two numbers passed into it
 	public static double max(double num1, double num2){
 		if(num1 >= num2){
@@ -145,18 +153,18 @@ public class Calculate {
 		double result = 0.0;
 		
 		int tempInt = (int) (orig * 1000);
-		int roundNum = tempInt % 10;
-		tempInt = tempInt/10;
-		if(roundNum >=5 && tempInt > 0) {
+		int roundNum = tempInt % 10;	//takes the digit in the 3rd decimal place of the original number
+		tempInt = tempInt/10;				
+		if(roundNum >=5 && tempInt > 0) { //positive
 			tempInt++;
-		}else if(roundNum <= -5 && tempInt < 0) {
+		}else if(roundNum <= -5 && tempInt < 0) { //negative
 			tempInt--;
 		}
 		result = tempInt/100.0;
 		return result;
 	}
 	
-	//takes in an exponent expression and returns the result as a double
+	//takes in an exponent expression and returns the result as a double - only computes positive exponents
 	public static double exponent(double base, int exponent) {
 		if(exponent < 0) {
 			throw new IllegalArgumentException("Enter a positive exponent");
@@ -169,7 +177,7 @@ public class Calculate {
 		return resultant;
 	}
 	
-	//takes in a positive integer and returns its expanded factorial
+	//takes in a positive integer and computes its factorial - returns it as an int
 	public static int factorial(int num){
 		if(num < 0) {
 			throw new IllegalArgumentException("The input to factorial cannot be negative");
@@ -182,7 +190,7 @@ public class Calculate {
 		return resultant;
 	}
 	
-	//checks if the input is a prime number
+	//checks if the input is a prime number - returns as a boolean value
 	public static boolean isPrime(int num){
 		int n = (int)absValue(num);
 		int factor = n - 1;
@@ -197,21 +205,22 @@ public class Calculate {
 		return isPrime;
 	}
 	
+	
 	//returns the greatest common factor of two integers
 	public static int gcf(int a, int b){
 		int divisor = 0;
 		
-	    a = (int) absValue((double) a);
-	    b = (int) absValue((double) b);
+	    a = absValue(a); 
+	    b = absValue(b);
 	    
-	    if(b > a){
+	    if(b > a){ 	//starts the divisor at the greater value
 	        divisor = b;
 	    }else{
 	        divisor = a;
 	    }
 	    
-	    while (divisor >= 1){
-	        if(a % divisor == b % divisor && a % divisor ==0){
+	    while (divisor >= 1){	//runs through every value between the greater number and zero until it reaches a value that is a common factor
+	        if(a % divisor == 0 && b % divisor == 0){
 	            break;
 	        }
 	        divisor--;
