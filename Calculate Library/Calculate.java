@@ -1,4 +1,4 @@
-/*Christopher Kha
+/*Christopher Kha - 2nd Period 
  *September 6, 2017 
  *Our self written math library. 
  *It contains a series of methods to do basic math functions.
