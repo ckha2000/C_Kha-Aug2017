@@ -37,7 +37,7 @@ public class Calculate {
 	
 	//calculates the discriminant of a given quadratic equation
 	public static double discriminant(double a, double b, double c) {
-		return b*b - 4*a*c;
+		return b*b - 4*a*c; 
 	}
 	
 	//takes a mixed number and converts it into an improper fraction
@@ -192,7 +192,7 @@ public class Calculate {
 	
 	//checks if the input is a prime number - returns as a boolean value
 	public static boolean isPrime(int num){
-		int n = (int)absValue(num);
+		int n = absValue(num);
 		int factor = n - 1;
 		boolean isPrime = true;
 		while(factor > 2){
