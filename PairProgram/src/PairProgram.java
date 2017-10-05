@@ -38,7 +38,9 @@ public class PairProgram {
 			}
 			
 			System.out.println("Are you done? ");
-			if(userInput.next().equalsIgnoreCase("yes")) {
+			String finished = userInput.nextLine();
+			
+			if(finished.equalsIgnoreCase("yes")) {
 				done = true;
 			}
 		}
