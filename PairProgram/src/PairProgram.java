@@ -44,9 +44,17 @@ public class PairProgram {
 				done = true;
 			}
 		}
+		
 		System.out.println("The smallest integer entered is " + min + ".");
 		System.out.println("The largest integer entered is " + max + ".");
-		System.out.println("The sum of all even integers entered is " + sum + ".");
-		System.out.println("The largest even integer entered is " + largestEven + ".");
+		
+		if(sum == 0 && largestEven == Integer.MIN_VALUE) {
+			System.out.println("There are no evens");
+		}else {
+			System.out.println("The sum of all even integers entered is " + sum + ".");
+			System.out.println("The largest even integer entered is " + largestEven + ".");
+		}
+		
+		userInput.close();
 	}
 }
