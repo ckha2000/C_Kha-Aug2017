@@ -12,6 +12,8 @@ public class QuadraticClient {
 		System.out.println("Provide values for coefficients a, b, and c");
 		
 		while(!done) {
+			System.out.println();
+			
 			System.out.print("a: ");
 			double a = userInput.nextDouble();
 			
@@ -21,8 +23,22 @@ public class QuadraticClient {
 			System.out.print("c: ");
 			double c = userInput.nextDouble();
 			
+			System.out.println();
+			System.out.println("Description of the graph of:");
+			System.out.println("y = " + a + " x^2 + " + b + " x + " + c);
 			
+			System.out.println(Quadratic.quadrDescriber(a,b,c));
+			
+			System.out.println("Do you want to keep going? (Type \"quit\" to end)");
+			String quit = userInput.next();
+			
+			System.out.println();
+			if(quit.charAt(0) == 'q' || quit.charAt(0) == 'Q') {
+				done = true;
+			}
 		}
+		
+		userInput.close();
 
 	}
 
