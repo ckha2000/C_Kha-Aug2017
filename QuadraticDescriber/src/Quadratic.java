@@ -2,7 +2,6 @@
 //October 6, 2017
 //performs the calculations for the quadratic describer and returns the results as a string
 public class Quadratic {
-	
 	//calculates the discriminant of a given quadratic equation
 	public static double discriminant(double a, double b, double c) {
 		return b*b - 4*a*c; 
@@ -71,7 +70,7 @@ public class Quadratic {
 	
 	//returns the roots of a quadratic function as a String
 	public static String quadForm(double a, double b, double c){
-		if(a <= 0){
+		if(a == 0){
 			throw new IllegalArgumentException("Please enter a valid coefficient for \"a\"");
 		}
 		
@@ -107,10 +106,21 @@ public class Quadratic {
 		}
 	}
 	
+	//returns a String containing a description of the direction, AOS, vertex, x-int, and y-int of the quadratic equation
 	public static String quadrDescriber(double a, double b, double c) {
-		String s = "";
-		String openDirec = "";
+		String s = "Description of the Graph of:\ny = " + a + " x^2 ";
 		
+		if(b != 0){
+			s += "+ " + b + " x ";
+		}
+		
+		if(c != 0){
+			s += "+ " + c;
+		}
+		
+		s+= "\n\n";
+		
+		String openDirec = "";
 		if(a > 0) {
 			openDirec = "Up";
 		}else {
@@ -132,7 +142,7 @@ public class Quadratic {
 			xInts = "None";
 		}
 		s += "\nx-intercept(s): " + xInts;
-		
+
 		s += "\ny-intercept: " + c;
 		
 		return	s;	
