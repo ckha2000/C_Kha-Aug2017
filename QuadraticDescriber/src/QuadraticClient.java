@@ -1,4 +1,4 @@
-//Christopher Kha
+//Christopher Kha	Period 2
 //October 6, 2017
 //Takes in the coefficients of a quadratic equation and prints out a description of it.
 

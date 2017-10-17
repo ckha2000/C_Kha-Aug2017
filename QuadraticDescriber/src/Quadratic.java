@@ -1,4 +1,4 @@
-//Christopher Kha
+//Christopher Kha	Period 2
 //October 6, 2017
 //performs the calculations for the quadratic describer and returns the results as a string
 public class Quadratic {
@@ -14,7 +14,7 @@ public class Quadratic {
 		}else{
 			return number;
 		}
-	}
+	} 
 	
 	//returns the square root of a decimal number rounded to the nearest two decimal places
 	public static double sqrt(double num){
