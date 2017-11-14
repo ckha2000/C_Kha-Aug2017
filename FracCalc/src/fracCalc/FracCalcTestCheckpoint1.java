@@ -1,5 +1,5 @@
 package fracCalc;
- 
+
 import org.junit.Test;
 
 // Checkpoint 1-only tests

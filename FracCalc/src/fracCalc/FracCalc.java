@@ -1,7 +1,7 @@
-package fracCalc;
 //Christopher Kha	Period 2
 //November 8, 2017
 
+package fracCalc;
 import java.util.Scanner;
 
 public class FracCalc {
@@ -19,7 +19,7 @@ public class FracCalc {
     		
     	}
     	
-    	
+    	userInput.close();
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -50,16 +50,18 @@ public class FracCalc {
     	String num = "0";
     	String denom = "1";
     	
-    	if(fraction.contains("_")) {
-    		String[] fracTemp = fraction.split("_");
-        	whole = fracTemp[0];
-        	if(fracTemp.length != 1) {
-        		String[] frac = fracTemp[1].split("/");
-        		num = frac[1];
-        		denom = frac[2];
-        	}
+    	int undScoreIndex = fraction.indexOf('_');
+    	int fractionIndex = fraction.indexOf('/');
+    	
+    	if(undScoreIndex > 0){
+    		whole = fraction.substring(0, undScoreIndex);
     	}
-    			
+    	if(fractionIndex > 0){
+    		num = fraction.substring(undScoreIndex + 1, fractionIndex);
+    		denom = fraction.substring(fractionIndex+1);
+    	}else{
+    		whole = fraction;
+    	}
     	
     	return "whole:" + whole + " numerator:" + num + " denominator:" + denom;
     }
