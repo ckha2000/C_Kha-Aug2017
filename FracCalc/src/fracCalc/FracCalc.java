@@ -2,7 +2,7 @@
 //November 8, 2017
 
 package fracCalc;
-import java.util.Scanner;
+import java.util.*;
 
 public class FracCalc {
 
@@ -41,6 +41,8 @@ public class FracCalc {
         String op1Components = splitFrac(operand1);
         String op2Components = splitFrac(operand2);
         
+        
+        
         return op2Components;
     }
 
@@ -66,5 +68,8 @@ public class FracCalc {
     	return "whole:" + whole + " numerator:" + num + " denominator:" + denom;
     }
     
-    
-}
+    public static String toImproperFrac(int wholeNum, int num, int denom) {
+		int numerator = wholeNum * denom + num;
+		return numerator + "/" + denom; 
+    }
+} 
