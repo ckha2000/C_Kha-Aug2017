@@ -119,8 +119,14 @@ public class FracCalc {
     	//flip num and denom if division
     	if(operand.equals("/")) {
     		int temp = op2[1];
+    		
     		op2[1] = op2[2];
     		op2[2] = temp;
+    		
+    		if(temp < 0) {
+    			op2[1] *= -1;
+    			op2[2] *= -1;
+    		}
     		
     	}
     	
