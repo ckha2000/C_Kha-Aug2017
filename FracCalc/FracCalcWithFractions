@@ -1,0 +1,74 @@
+//Christopher Kha	Period 2
+//December 13, 2017
+
+package fracCalc;
+import java.util.*;
+
+public class FracCalc {
+
+    public static void main(String[] args) 
+    {
+        // TODO: Read the input from the user and call produceAnswer with an equation
+    	Scanner userInput = new Scanner(System.in);
+    	String input = "";
+
+    	while(true) {
+    		input = userInput.nextLine();
+    		
+    		if(input.equals("quit")) {
+    			break;
+    		}else {
+    			System.out.println(produceAnswer(input));	
+    		}
+    	}
+    	
+    	userInput.close();
+    }
+    
+    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
+    // This function takes a String 'input' and produces the result
+    //
+    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
+    //      e.g. input ==> "1/2 + 3/4"
+    //        
+    // The function should return the result of the fraction after it has been calculated
+    //      e.g. return ==> "1_1/4"
+    public static String produceAnswer(String input)
+    { 
+        // TODO: Implement this function to produce the solution to the input
+    	Fraction answer;
+    	
+    	String[] splitInput = input.split(" ");
+        String operand1 = splitInput[0];
+        String operand2 = splitInput[2];
+        String operator = splitInput[1];
+    	
+        Fraction op1 = new Fraction(operand1);
+        Fraction op2 = new Fraction(operand2);
+        
+        answer = doOperation(op1, op2, operator);
+        
+        if(answer.getNum() == 0) {
+        	return "0";
+        }
+    	
+    	answer.reduceFraction();
+        
+        return answer.toString();
+    }
+
+    public static Fraction doOperation(Fraction op1, Fraction op2, String operator) {
+    	Fraction temp = new Fraction();
+    	
+    	op1.toImproperFrac();
+    	op2.toImproperFrac();
+    	
+    	if(operator.equals("+") || operator.equals("-")) {
+         	temp = op1.addition(op2, operator);
+        }else if(operator.equals("*") || operator.equals("/")) {
+         	temp = op1.multiplication(op2, operator);
+        }
+    	
+    	return temp; 
+    }
+}
