@@ -1,0 +1,175 @@
+//Christopher Kha	Period 2
+//December 13, 2017
+
+package fracCalc;
+
+public class Fraction {
+	
+	private int whole = 0;
+	private int num = 0;
+	private int denom = 1;
+	
+	public Fraction(String fracString) {
+		int undScoreIndex = fracString.indexOf('_');
+    	int fractionIndex = fracString.indexOf('/');
+    	
+    	if(undScoreIndex > 0){
+    		this.whole = Integer.valueOf(fracString.substring(0, undScoreIndex));
+    	}
+    	if(fractionIndex > 0){
+    		this.num = Integer.valueOf(fracString.substring(undScoreIndex + 1, fractionIndex));
+    		this.denom = Integer.valueOf(fracString.substring(fractionIndex+1));
+    	}else{
+    		this.whole = Integer.valueOf(fracString);
+    	}
+	}
+	
+	public Fraction() {
+	}
+	
+	public int getWhole() {
+		return this.whole;
+	}
+	
+	public int getNum() {
+		return this.num;
+	}
+	
+	public int getDenom() {
+		return this.denom;
+	}
+	
+	public void setWhole(int newWhole) {
+		this.whole = newWhole;
+	}
+	
+	public void setNum(int newNum) {
+		this.num = newNum;
+	}
+	
+	public void setDenom(int newDenom) {
+		this.denom = newDenom;
+	}
+	
+	public Fraction addition(Fraction op2, String operand) {
+    	Fraction answer = new Fraction();
+    	
+    	this.toCommonDenom(op2);
+    	
+    	if(operand.equals("-")) {
+    		op2.setNum(op2.getNum() * -1);
+    	}
+    	
+    	answer.setNum(this.num + op2.getNum());
+    	answer.setDenom(this.denom);
+    	
+    	return answer;
+    }
+	
+	public Fraction multiplication(Fraction op2, String operand) {
+    	Fraction answer = new Fraction();
+    	
+    	//flip num and denom if division
+    	if(operand.equals("/")) {
+    		int temp = op2.getNum();
+    		
+    		op2.setNum(op2.getDenom());
+    		op2.setDenom(temp);
+    		
+    		if(temp < 0) {
+    			op2.setNum(op2.getNum() * -1);
+    			op2.setDenom(op2.getDenom() * -1);
+    		}
+    	}
+    	
+    	answer.setNum(this.num * op2.getNum());
+    	answer.setDenom(this.denom * op2.getDenom());
+    	
+    	if(answer.getNum() < 0 && answer.getDenom() < 0) {
+    		answer.setNum(answer.getNum() * -1);
+    		answer.setDenom(answer.getDenom() * -1);
+    	}
+    	
+    	return answer;
+    }
+	
+	private void toCommonDenom(Fraction op2) {
+    	int tempDenom = this.denom * op2.getDenom();
+    	
+    	//multiplies each numerator by the opposing denominator
+    	this.num *= op2.getDenom();
+    	op2.setNum(op2.getNum() * this.denom);
+    	
+    	//sets the denominators to the common denom
+    	this.denom = tempDenom;
+    	op2.setDenom(tempDenom);
+    }
+    
+    //converts the fraction into an improper fraction
+    public void toImproperFrac() {
+		if(this.whole < 0) {
+			this.num *= -1;
+		}
+    	
+    	this.num = this.whole * this.denom + this.num;
+		this.whole = 0;
+    }
+    
+    private static int absValue(int number){
+		if(number < 0){
+			return number*-1;
+		}else{
+			return number;
+		}
+	}
+    
+    private static int gcf(int a, int b){
+		int divisor = 0;
+	    a = absValue(a); 
+	    b = absValue(b);
+	    
+	    if(b > a){ 	//starts the divisor at the greater value
+	        divisor = b;
+	    }else{
+	        divisor = a;
+	    }
+	    
+	    if(a == 0 || b == 0) { //checks if one of the values is 0
+	    	return 0;
+	    }
+	    while (divisor >= 1){	//runs through every value between the greater number and zero until it reaches a value that is a common factor
+	        if(a % divisor == 0 && b % divisor == 0){
+	            break;
+	        }
+	        divisor--;
+	    }
+	    return divisor;
+	}
+    
+    public void reduceFraction() {
+    	int commonFactor = gcf(this.num, this.denom);
+    	
+    	this.num /= commonFactor;
+    	this.denom /= commonFactor;
+    	
+    	this.whole = this.num / this.denom;
+    	
+    	if(this.whole < 0) {
+    		this.num *= -1;
+    	}
+    	
+    	this.num = this.num % this.denom;
+    	
+    }
+
+	
+	public String toString() {
+		if(this.whole == 0) {
+    		return this.num + "/" + this.denom; 
+		}else if(this.num == 0){ 
+			return this.whole + "";
+		}else {
+			return this.whole + "_" + this.num + "/" + this.denom;
+		}
+	}
+}
